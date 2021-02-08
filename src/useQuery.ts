@@ -1,8 +1,6 @@
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router"
 import { parse, stringify } from "query-string"
-import { GetQuery, PutQuery, SetQuery, UseQuery } from "./types"
-import { Query } from "./Query"
-import { useMemo } from "react"
+import { PatchQuery, SetQuery, UseQuery } from "./types"
 
 export const useQuery: UseQuery = <TValue extends object>(
   initialValue,
@@ -11,26 +9,24 @@ export const useQuery: UseQuery = <TValue extends object>(
   const history = useHistory()
   const queryString = history.location.search
 
-  return useMemo(() => {
-    const query = {
-      ...initialValue,
-      ...parse(queryString),
-    }
+  const query = {
+    ...initialValue,
+    ...parse(queryString),
+  }
 
-    const updateQuery = (state) => {
-      const newQueryString = stringify(
-        pickBy(state, (value) => !stripValues.includes(value))
-      )
+  const updateQuery = (state) => {
+    const newQueryString = stringify(
+      pickBy(state, (value) => !stripValues.includes(value))
+    )
 
-      history.push({ search: newQueryString })
-    }
+    history.push({ search: newQueryString })
+  }
 
-    const get: GetQuery<TValue> = () => query
-    const set: SetQuery<TValue> = (state) => updateQuery(state)
-    const put: PutQuery<TValue> = (state) => updateQuery({ ...query, ...state })
+  const setQuery: SetQuery<TValue> = (state) => updateQuery(state)
+  const patchQuery: PatchQuery<TValue> = (state) =>
+    updateQuery({ ...query, ...state })
 
-    return new Query(get, set, put)
-  }, [queryString])
+  return [query, setQuery, patchQuery]
 }
 
 const pickBy = (

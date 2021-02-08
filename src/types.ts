@@ -1,14 +1,7 @@
 export type UseQuery = <TValue extends object>(
   initialValue: TValue,
   stripValues?: any[]
-) => QueryHandle<TValue>
+) => [TValue, SetQuery<TValue>, PatchQuery<TValue>]
 
-export type GetQuery<TValue extends object> = () => TValue
 export type SetQuery<TValue extends object> = (value: Partial<TValue>) => void
-export type PutQuery<TValue extends object> = (value: Partial<TValue>) => void
-
-export interface QueryHandle<TValue extends object> {
-  get: GetQuery<TValue>
-  set: SetQuery<TValue>
-  put: PutQuery<TValue>
-}
+export type PatchQuery<TValue extends object> = (value: Partial<TValue>) => void

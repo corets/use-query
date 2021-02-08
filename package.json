@@ -35,8 +35,7 @@
   "peerDependencies": {
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-router": ">=5.0.0",
-    "react-router-dom": ">=5.0.0"
+    "react-router": "^5.0.0"
   },
   "dependencies": {
     "query-string": "^6.13.8"
@@ -55,8 +54,7 @@
     "prettier": "2.2.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-router": ">=5.0.0",
-    "react-router-dom": ">=5.0.0",
+    "react-router": "^5.0.0",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3"
   }
