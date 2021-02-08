@@ -1,4 +1,4 @@
-import { useHistory } from "react-router"
+import { useHistory } from "react-router-dom"
 import { parse, stringify } from "query-string"
 import { GetQuery, PutQuery, SetQuery, UseQuery } from "./types"
 import { Query } from "./Query"

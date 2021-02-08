@@ -1,5 +1,5 @@
 import { useQuery } from "./useQuery"
-import { MemoryRouter, Route } from "react-router"
+import { MemoryRouter, Route } from "react-router-dom"
 import React from "react"
 import { mount } from "enzyme"
 import { act } from "react-dom/test-utils"
