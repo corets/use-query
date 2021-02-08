@@ -1,7 +1,7 @@
 {
   "name": "@corets/use-query",
   "description": "Hooks for react-router query parameters",
-  "version": "0.0.1-6",
+  "version": "0.0.1-7",
   "author": "Maxim Kott",
   "license": "MIT",
   "main": "dist/index.js",
