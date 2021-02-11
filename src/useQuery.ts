@@ -1,4 +1,4 @@
-import { useHistory } from "react-router"
+import { useHistory, useLocation } from "react-router"
 import { parse, stringify } from "query-string"
 import { PatchQuery, SetQuery, UseQuery } from "./types"
 
@@ -7,7 +7,7 @@ export const useQuery: UseQuery = <TValue extends object>(
   stripValues = [undefined, null, "", 0, "0"]
 ) => {
   const history = useHistory()
-  const queryString = history.location.search
+  const queryString = useLocation().search
 
   const query = {
     ...initialValue,
